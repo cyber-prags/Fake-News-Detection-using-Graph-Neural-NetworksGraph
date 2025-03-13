@@ -44,7 +44,8 @@ This project explores the use of Graph Neural Networks (GNNs) for fake news dete
 ### **Graph Representations**
 
 #### **Training Graph**
-![Training Graph](<path-to-training-graph-image>)
+
+
 - **Description**: Nodes represent articles; edges represent relationships.
 - **Observation**: Dense connectivity highlights interdependencies.
 
@@ -56,7 +57,7 @@ This project explores the use of Graph Neural Networks (GNNs) for fake news dete
 ---
 
 ### **Training and Test Loss**
-![Training and Test Loss](<path-to-loss-curve-image>)
+![image](https://github.com/user-attachments/assets/77a7bfc6-b521-4ee3-8849-d49a460ef7de)
 - **Description**: Tracks training and test loss over epochs.
 - **Observation**:
   - Training loss consistently decreases.
@@ -65,7 +66,9 @@ This project explores the use of Graph Neural Networks (GNNs) for fake news dete
 ---
 
 ### **Metrics Over Epochs**
-![Metrics Over Epochs](<path-to-metrics-image>)
+
+![image](https://github.com/user-attachments/assets/b67457a1-c848-4016-99bb-714d0fcf770c)
+
 - **Description**: Tracks Accuracy, Precision, Recall, F1 Score, and ROC-AUC.
 - **Observation**:
   - Fluctuations in metrics indicate the model's sensitivity to data variability.
@@ -74,7 +77,8 @@ This project explores the use of Graph Neural Networks (GNNs) for fake news dete
 ---
 
 ### **Confusion Matrix**
-![Confusion Matrix](<path-to-confusion-matrix-image>)
+![image](https://github.com/user-attachments/assets/f38e9251-d3b1-47a8-aae2-66c17297b8a6)
+
 - **Description**: Summarizes the model's prediction performance.
 - **Observation**:
   - High true positives (1636) and true negatives (1830).
@@ -83,7 +87,8 @@ This project explores the use of Graph Neural Networks (GNNs) for fake news dete
 ---
 
 ### **ROC Curve**
-![ROC Curve](<path-to-roc-curve-image>)
+![image](https://github.com/user-attachments/assets/5709e02d-4d1e-4103-af3e-4d36b1cfb717)
+
 - **Description**: Shows the trade-off between sensitivity and specificity.
 - **Observation**:
   - High ROC-AUC score demonstrates strong classification ability.
@@ -126,6 +131,7 @@ This project explores the use of Graph Neural Networks (GNNs) for fake news dete
 ## How to Use
 
 ### **Clone the Repository**
-```bash
+```
 git clone <repository-url>
 cd fake-news-detection-gnn
+```
