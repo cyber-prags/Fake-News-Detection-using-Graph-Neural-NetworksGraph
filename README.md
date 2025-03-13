@@ -67,9 +67,13 @@ This project explores the use of **Graph Neural Networks (GNNs)** for **fake new
 📌 **Description**:
 - Nodes represent **news articles**.
 - Edges define **relationships** based on citations, similarities, or social interactions.
+  
+![image](https://github.com/user-attachments/assets/c19cf544-b8bd-4759-8475-be170ea211ad)
+
+
 
 #### **Testing Graph**
-![Testing Graph](<path-to-testing-graph-image>)
+
 📌 **Description**:
 - Nodes represent **unseen news articles**.
 - The graph structure evaluates the **model’s generalization** capabilities.
