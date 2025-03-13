@@ -1,97 +1,113 @@
-# Fake News Detection Using Graph Neural Networks
+# **Fake News Detection Using Graph Neural Networks (GNNs)**
 
-## Project Overview
+## **Project Overview**
+This project explores the use of **Graph Neural Networks (GNNs)** for **fake news detection**. By leveraging the graph structure of news articles and their relationships, the model captures **relational information** for more accurate classification.
 
-This project explores the use of Graph Neural Networks (GNNs) for fake news detection. By leveraging the graph structure of news articles and their relationships, the model captures relational information for more accurate classification.
+🚀 **Key Highlights**:
+- Uses **Graph Attention Networks (GATConv)** to capture article relationships.
+- Constructs graphs where **nodes represent news articles** and **edges define relationships**.
+- Trained using **binary cross-entropy loss** and optimized via **Adam optimizer**.
+- Evaluated using **accuracy, precision, recall, F1-score, and ROC-AUC**.
 
 ---
 
-## Features and Workflow
+## **1️⃣ Features and Workflow**
 
-### 1. Dataset Preparation
+### **1. Dataset Preparation**
 - **Data Types**:
-  - Textual data: Tokenized and transformed into embeddings (e.g., TF-IDF or pre-trained embeddings).
-  - Graph data: Represents relationships between news articles using adjacency matrices.
-- **Preprocessing**:
-  - Feature extraction for nodes (articles).
-  - Adjacency matrices to encode relationships.
-
-### 2. Graph Construction
-- **Nodes**: Represent individual news articles, enriched with textual features.
-- **Edges**: Define relationships (e.g., citations, similarities) between articles.
-- **Graph Representation**: Graph objects created using libraries like `PyTorch Geometric`.
-
-### 3. GNN Model
-- **Architecture**:
-  - Graph Convolutional Layers to aggregate node information from neighbors.
-  - Fully connected layers for classification.
-- **Output**:
-  - Predicts the likelihood of an article being fake or real.
-- **Training**:
-  - Optimizer: Adam.
-  - Loss function: Binary cross-entropy.
-
-### 4. Evaluation
-- **Metrics**:
-  - Accuracy, Precision, Recall, F1-Score, ROC-AUC.
-- **Visualization**:
-  - Loss curves, ROC curves, confusion matrix, and metric trends.
+  - **Textual Data**: Tokenized and transformed into embeddings (TF-IDF, pre-trained embeddings).
+  - **Graph Data**: Represents relationships between news articles using **adjacency matrices**.
+- **Preprocessing Steps**:
+  - Extracts **text-based features** for each news article.
+  - Constructs **adjacency matrices** to encode relationships between articles.
 
 ---
 
-## Visualizations and Results
+### **2. Graph Construction**
+- **Nodes**: Represent individual news articles, enriched with textual features.
+- **Edges**: Define relationships based on:
+  - **Citations** between articles.
+  - **Textual similarities** between articles.
+  - **Social media interactions** (e.g., Twitter-based dataset).
+- **Graph Representation**:
+  - Uses **NetworkX** and **PyTorch Geometric** for graph processing.
+  - Converts raw **news articles into a structured graph**.
+
+---
+
+### **3. Graph Neural Network (GNN) Model**
+- **Architecture**:
+  - **Graph Attention Network (GATConv)** layers for message passing.
+  - **Fully connected layers** for final classification.
+- **Training**:
+  - **Optimizer**: Adam (`lr=0.01`, `weight_decay=0.01`).
+  - **Loss Function**: Binary Cross-Entropy Loss (`BCELoss`).
+- **Prediction Output**:
+  - Probability that an article is **fake (1) or real (0)**.
+
+---
+
+### **4. Model Evaluation**
+- **Evaluation Metrics**:
+  - **Accuracy**: Measures overall correctness.
+  - **Precision & Recall**: Captures trade-offs in misclassifications.
+  - **F1-Score**: Harmonic mean of precision and recall.
+  - **ROC-AUC**: Assesses the model’s ability to distinguish between fake and real news.
+- **Visualization**:
+  - **Loss curves** over epochs.
+  - **ROC curve** to show trade-off between sensitivity and specificity.
+  - **Confusion matrix** to analyze model predictions.
+
+---
+
+## **2️⃣ Visualizations and Results**
 
 ### **Graph Representations**
-
 #### **Training Graph**
-
-
-- **Description**: Nodes represent articles; edges represent relationships.
-- **Observation**: Dense connectivity highlights interdependencies.
+📌 **Description**:
+- Nodes represent **news articles**.
+- Edges define **relationships** based on citations, similarities, or social interactions.
 
 #### **Testing Graph**
 ![Testing Graph](<path-to-testing-graph-image>)
-- **Description**: Nodes represent unseen articles.
-- **Observation**: Sparse structure to evaluate the model's generalization.
+📌 **Description**:
+- Nodes represent **unseen news articles**.
+- The graph structure evaluates the **model’s generalization** capabilities.
 
 ---
 
-### **Training and Test Loss**
+### **Training and Test Loss Over Epochs**
 ![image](https://github.com/user-attachments/assets/77a7bfc6-b521-4ee3-8849-d49a460ef7de)
-- **Description**: Tracks training and test loss over epochs.
-- **Observation**:
-  - Training loss consistently decreases.
-  - Test loss fluctuates, indicating potential overfitting in certain epochs.
+
+📉 **Observation**:
+- **Training loss decreases** steadily, indicating learning.
+- **Test loss fluctuates**, suggesting potential **overfitting** at certain epochs.
 
 ---
 
 ### **Metrics Over Epochs**
-
 ![image](https://github.com/user-attachments/assets/b67457a1-c848-4016-99bb-714d0fcf770c)
 
-- **Description**: Tracks Accuracy, Precision, Recall, F1 Score, and ROC-AUC.
-- **Observation**:
-  - Fluctuations in metrics indicate the model's sensitivity to data variability.
-  - Overall improvement in key metrics over training epochs.
+📊 **Observation**:
+- Accuracy, Precision, Recall, and F1-score **improve over time**.
+- Early fluctuations indicate **sensitivity to data variability**.
 
 ---
 
 ### **Confusion Matrix**
 ![image](https://github.com/user-attachments/assets/f38e9251-d3b1-47a8-aae2-66c17297b8a6)
 
-- **Description**: Summarizes the model's prediction performance.
-- **Observation**:
-  - High true positives (1636) and true negatives (1830).
-  - Low false positives (80) and false negatives (280).
+📌 **Description**:
+- **True Positives (1636)** and **True Negatives (1830)** indicate strong classification performance.
+- **False Positives (80)** and **False Negatives (280)** highlight misclassifications.
 
 ---
 
 ### **ROC Curve**
 ![image](https://github.com/user-attachments/assets/5709e02d-4d1e-4103-af3e-4d36b1cfb717)
 
-- **Description**: Shows the trade-off between sensitivity and specificity.
-- **Observation**:
-  - High ROC-AUC score demonstrates strong classification ability.
+📌 **Observation**:
+- **High ROC-AUC score** (close to 1) indicates strong classification capability.
 
 ---
 
@@ -111,27 +127,92 @@ This project explores the use of Graph Neural Networks (GNNs) for fake news dete
 
 ---
 
-## Discussion and Insights
+## **3️⃣ Discussion and Insights**
+### **Performance**
+✅ **Key Takeaways**:
+- **High ROC-AUC** score confirms effective classification.
+- Model efficiently captures **relational information** from news articles.
 
-### **Performance**:
-- High ROC-AUC and accurate predictions suggest effective utilization of relational data.
-- Precision-recall trade-offs show the model prioritizes reducing false negatives.
+### **Challenges**
+⚠️ **Key Issues**:
+- **Overfitting**: Test loss fluctuations suggest sensitivity to training data.
+- **Sparse Graph Structures**: Test data graphs are often **less connected**, affecting model performance.
 
-### **Challenges**:
-- Fluctuations in test loss and metrics highlight generalization challenges.
-- Sparse graph structures in testing require the model to rely on indirect relationships.
-
-### **Future Work**:
-- Add richer features and additional relationship types.
-- Explore advanced GNN architectures (e.g., Graph Attention Networks).
-- Implement techniques to handle overfitting and improve metric stability.
+### **Future Work**
+🚀 **Improvements**:
+- **Enhanced Graph Features**: Include **social media trends, user credibility scores**.
+- **Advanced GNN Architectures**: Experiment with **Graph Attention Networks (GAT)** and **GraphSAGE**.
+- **Better Regularization**: Use **dropout layers** to mitigate overfitting.
 
 ---
 
-## How to Use
+## **4️⃣ How to Use**
 
-### **Clone the Repository**
-```
+### **1. Clone the Repository**
+```bash
 git clone <repository-url>
 cd fake-news-detection-gnn
 ```
+
+###  2. Install Dependencies
+```bash
+pip install torch torchvision torch_geometric networkx matplotlib seaborn pandas sklearn
+```
+### 3. Run the Training Script
+```
+python train.py
+```
+### 4. Evaluate the Model
+```
+python evaluate.py
+```
+## 5️⃣ Code Breakdown
+### Graph Construction
+- Uses NetworkX to create news article graphs.
+- Converts PyTorch Geometric Data objects into NetworkX Graphs.
+- 
+### GNN Model Implementation
+```
+from torch_geometric.nn import GATConv
+from torch.nn import Linear
+
+class GNN(torch.nn.Module):
+    def __init__(self, in_channels, hidden_channels, out_channels):
+        super().__init__()
+
+        # Graph Attention Layers
+        self.conv1 = GATConv(in_channels, hidden_channels)
+        self.conv2 = GATConv(hidden_channels, hidden_channels)
+        self.conv3 = GATConv(hidden_channels, hidden_channels)
+
+        # Fully Connected Layers
+        self.lin_news = Linear(in_channels, hidden_channels)
+        self.lin0 = Linear(hidden_channels, hidden_channels)
+        self.lin1 = Linear(2 * hidden_channels, out_channels)
+
+    def forward(self, x, edge_index, batch):
+        h = self.conv1(x, edge_index).relu()
+        h = self.conv2(h, edge_index).relu()
+        h = self.conv3(h, edge_index).relu()
+
+        h = gmp(h, batch)
+
+        h = self.lin0(h).relu()
+
+        root = (batch[1:] - batch[:-1]).nonzero(as_tuple=False).view(-1)
+        root = torch.cat([root.new_zeros(1), root + 1], dim=0)
+        news = x[root]
+        news = self.lin_news(news).relu()
+
+        out = self.lin1(torch.cat([h, news], dim=-1))
+        return torch.sigmoid(out)
+```
+## Conclusion
+This project successfully demonstrates fake news detection using Graph Neural Networks by leveraging news article relationships. 🚀
+
+## 📌 Next Steps:
+
+- Deploy as a real-time API.
+- Enhance dataset with multi-source news.
+- Optimize hyperparameters for improved performance.
+
